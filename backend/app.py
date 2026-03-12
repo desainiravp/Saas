@@ -9,7 +9,6 @@ tasks = {
 
 @app.route("/tasks")
 def get_tasks():
-
     tenant = request.headers.get("tenant")
 
     if tenant in tasks:
@@ -17,4 +16,5 @@ def get_tasks():
 
     return jsonify([])
 
-app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
