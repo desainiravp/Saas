@@ -1,0 +1,29 @@
+<h1>SaaS Task Manager</h1>
+
+<select id="tenant">
+<option value="tenant1">Tenant 1</option>
+<option value="tenant2">Tenant 2</option>
+</select>
+
+<button onclick="loadTasks()">Load Tasks</button>
+
+<div id="tasks"></div>
+
+<script>
+
+function loadTasks(){
+
+let tenant=document.getElementById("tenant").value
+
+fetch("/api/tasks",{
+headers:{tenant:tenant}
+})
+.then(r=>r.json())
+.then(data=>{
+document.getElementById("tasks").innerHTML =
+data.map(t=>"<p>"+t+"</p>").join("")
+})
+
+}
+
+</script>
