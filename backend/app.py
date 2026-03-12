@@ -5,11 +5,11 @@ import os
 app = Flask(__name__)
 
 conn = psycopg2.connect(
-    host="postgres-service",
-    database="saas",
-    user="postgres",
-    password="postgres",
-    port="5432"
+    host=os.getenv("DB_HOST", "postgres-service"),
+    database=os.getenv("DB_NAME", "saas"),
+    user=os.getenv("DB_USER", "postgres"),
+    password=os.getenv("DB_PASSWORD", "postgres"),
+    port=os.getenv("DB_PORT", "5432")
 )
 
 @app.route("/tasks")
