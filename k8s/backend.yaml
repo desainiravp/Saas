@@ -15,5 +15,6 @@ spec:
       containers:
       - name: backend
         image: nirav1611/microservice:backend-latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
