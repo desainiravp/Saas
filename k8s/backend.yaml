@@ -6,11 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: saas-backend
   template:
     metadata:
       labels:
-        app: backend
+        app: saas-backend
     spec:
       containers:
       - name: backend
@@ -18,3 +18,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
+        env:
+        - name: DB_HOST
+          value: "postgres-service"
+        - name: DB_NAME
+          value: "saas"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          value: "example"
+        - name: DB_PORT
+          value: "5432"
